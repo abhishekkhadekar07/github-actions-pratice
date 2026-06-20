@@ -1,0 +1,37 @@
+name: CICD Abhishek
+
+on:
+  workflow_dispatch:
+
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the Code
+        run: echo "Cloning the Code"
+  build:
+    needs: [code]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build using Docker
+        run: echo "Building using Docker"
+  test:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running test cases
+        run: echo "Testing the app"
+  
+  deploy:
+    needs: [build,test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploying on the machine
+        run: echo "Deploying the code"
+  done:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Jobs are for day
+        run: echo "Job is done"
+    
