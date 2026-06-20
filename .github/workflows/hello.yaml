@@ -2,11 +2,14 @@
 name: Hello 
 # on tells when workflow runs 
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 # what the workflow should do 
+#jon tells what workflows should do there can be one or more than one jobs hence write jobs 
+# jobs is an object so needs idemtation
 jobs:
   say-hello:
+  # create an Ephemeral container with ubuntu runnigs
     runs-on: ubuntu-latest
     steps:
       - name: say to hello to everyone
